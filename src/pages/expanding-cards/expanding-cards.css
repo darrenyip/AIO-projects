@@ -1,0 +1,63 @@
+/* .container {
+    @apply my-0 mx-auto flex w-[90vw];
+} */
+
+
+/* .panel {
+    @apply relative bg-cover bg-center 
+    bg-no-repeat h-[80vh] rounded-[50px]
+     text-[#fff] cursor-pointer 
+     flex-[0.5] m-[10px] transition-all ease-in duration-700;
+} */
+
+
+/* .panel-test {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    flex: 0.5;
+    margin: 10px;
+    transition: all 0.7s ease-in;
+} */
+
+
+/* .panel h3 {
+    @apply text-[40px] absolute bottom-[20px] left-[20px] m-0 opacity-0;
+} */
+
+
+/* .panel h3{
+    font-size: 40px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0;
+} */
+
+
+/* .panel.active {
+    flex: 5;
+} */
+
+
+/* .panel.active h3 {
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
+} */
+
+
+/* @media (max-width: 480px) {
+    .container {
+        width: 100vw;
+    }
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5) {
+        display: none;
+    }
+} */
