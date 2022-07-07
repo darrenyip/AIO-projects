@@ -8,6 +8,9 @@ import ProgressSteps from "./pages/progress-steps/ProgressSteps";
 import RotatingNav from "./pages/rotating-nav/RotatingNav";
 import BlurryLoading from "./pages/blurry-loading/BlurryLoading";
 import SoundBoard from "./pages/sound-board/SoundBoard";
+import BadDadWapper from "./pages/bad-dad-jokes/badDadWapper";
+import GetKeyCode from "./pages/get-key-code/GetKeyCode";
+import RandomChoice from "./pages/random-choice/RandomChoice";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -18,6 +21,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="rotating-nav" element={<RotatingNav />} />
         <Route path="blurry-loading" element={<BlurryLoading />} />
         <Route path="sound-board" element={<SoundBoard />} />
+        <Route path="dad-jokes" element={<BadDadWapper />} />
+        <Route path="get-key-code" element={<GetKeyCode />} />
+        <Route path="random-choice" element={<RandomChoice />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

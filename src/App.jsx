@@ -19,6 +19,15 @@ function App() {
         <li className="text-white font-bold text-[50px]">
           <Link to="sound-board">Sound Board</Link>
         </li>
+        <li className="text-white font-bold text-[50px]">
+          <Link to="dad-jokes">Bad Dad Jokes</Link>
+        </li>
+        <li className="text-white font-bold text-[50px]">
+          <Link to="get-key-code">Get Key Code</Link>
+        </li>
+        <li className="text-white font-bold text-[50px]">
+          <Link to="random-choice">Random Choice Picker</Link>
+        </li>
       </ul>
     </div>
   );
