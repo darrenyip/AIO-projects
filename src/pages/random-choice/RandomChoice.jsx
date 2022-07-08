@@ -31,12 +31,28 @@ const StyledContainer = styled.div`
   }
 `;
 
+const StyledButton = styled.button`
+  padding: 12px 18px;
+  color: white;
+  border-radius: 12px;
+  background-color: orange;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+`;
+
 function RandomChoice(props) {
   const [inputString, setInputString] = useState([]);
   const handleOnChange = (e) => {
     const value = e.target.value;
-    console.log(value.split(","));
-    setInputString(value);
+    if (value !== "") {
+      console.log();
+      const arr = value.split(",");
+      const filtered = arr.filter((el) => el !== "");
+      setInputString(filtered);
+    } else {
+      setInputString([]);
+    }
   };
   return (
     <StyledWapper>
@@ -53,7 +69,13 @@ function RandomChoice(props) {
           rows="10"
           onChange={handleOnChange}
         ></textarea>
-        {inputString.length !== 0 && <div>has input </div>}
+        {inputString.length !== 0 && (
+          <div className="flex gap-3 flex-wrap">
+            {inputString.map((el, index) => (
+              <StyledButton>{el}</StyledButton>
+            ))}
+          </div>
+        )}
       </StyledContainer>
     </StyledWapper>
   );

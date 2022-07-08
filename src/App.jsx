@@ -28,6 +28,12 @@ function App() {
         <li className="text-white font-bold text-[50px]">
           <Link to="random-choice">Random Choice Picker</Link>
         </li>
+        <li className="text-white font-bold text-[50px]">
+          <Link to="incrementing-counter">Social Counter</Link>
+        </li>
+        <li className="text-white font-bold text-[50px]">
+          <Link to="themed-clock">Themed Clock</Link>
+        </li>
       </ul>
     </div>
   );
