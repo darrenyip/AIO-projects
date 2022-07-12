@@ -34,6 +34,9 @@ function App() {
         <li className="text-white font-bold text-[50px]">
           <Link to="themed-clock">Themed Clock</Link>
         </li>
+        <li className="text-white font-bold text-[50px]">
+          <Link to="todo">Todo App</Link>
+        </li>
       </ul>
     </div>
   );

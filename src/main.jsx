@@ -13,6 +13,7 @@ import GetKeyCode from "./pages/get-key-code/GetKeyCode";
 import RandomChoice from "./pages/random-choice/RandomChoice";
 import IncrementingCounter from "./pages/incrementing-counter/IncrementingCounter";
 import ThemeClock from "./pages/themed-clock/ThemeClock";
+import Todo from "./pages/Todo/Todo";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="random-choice" element={<RandomChoice />} />
         <Route path="incrementing-counter" element={<IncrementingCounter />} />
         <Route path="themed-clock" element={<ThemeClock />} />
+        <Route path="todo" element={<Todo />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
