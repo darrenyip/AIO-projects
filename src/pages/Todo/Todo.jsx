@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { initTasks, TaskList } from "./todoData";
-import { useMemo, useState, useEffect } from "react";
+import { TaskList } from "./todoData";
+import { useState, useEffect } from "react";
 import CateDetail from "./components/CateDetail";
 const StyledCateTitle = styled.div`
   font-size: 22px;
