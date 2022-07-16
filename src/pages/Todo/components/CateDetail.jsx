@@ -10,7 +10,6 @@ const StyledCheckBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   ${({ isFinished }) => {
     if (isFinished) {
       return `
@@ -75,6 +74,9 @@ function CateDetail({ onAddNewTask, allTasks, onHandleFinished, selectCate }) {
     if (e.key !== "Enter") return;
     console.log(e);
     onAddNewTask(newTask);
+  };
+  const onHoverCate = (e) => {
+    console.log("mouse hover", e);
   };
 
   return (

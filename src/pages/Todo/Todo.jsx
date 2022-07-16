@@ -21,7 +21,6 @@ function Todo(props) {
     setAllCategories(catiesArr);
   };
   useEffect(() => {
-    // init the categories title on left
     setAllCaties();
   }, []);
 
