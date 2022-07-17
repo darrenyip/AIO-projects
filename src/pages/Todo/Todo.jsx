@@ -1,11 +1,7 @@
-import styled from "styled-components";
 import { TaskList } from "./todoData";
 import { useState, useEffect } from "react";
 import CateDetail from "./components/CateDetail";
-const StyledCateTitle = styled.div`
-  font-size: 22px;
-  color: ${({ active }) => (active ? "#EA5959" : "#525252")};
-`;
+import { StyledCateTitle } from "./todoStyle.style";
 
 function Todo(props) {
   const [allTasks, setAllTasks] = useState(TaskList);

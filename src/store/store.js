@@ -1,3 +1,7 @@
-import configureStore from "./configureStore";
-import { applyMiddleware, compose, createStore } from "redux";
-import thunkMiddleware from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
+import todoReducer from "../pages/Todo/todoSlice";
+export default configureStore({
+    reducer: {
+        todo: todoReducer,
+    },
+});

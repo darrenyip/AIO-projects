@@ -1,34 +1,12 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-const StyledCheckBox = styled.div`
-  cursor: pointer;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  border: 1px solid #ea5959;
-  margin-right: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  ${({ isFinished }) => {
-    if (isFinished) {
-      return `
-        &::after{
-          content:"🦄";
-        }
-      `;
-    }
-  }}
-`;
+import { addTodo, removeTodo, allTodo } from "../todoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { StyledTaskText, StyledCheckBox } from "../todoStyle.style";
 
-const StyledTaskText = styled.div`
-  font-size: 18px;
-  color: #5a5a5a;
-  margin-right: 18px;
-  text-decoration: ${({ isFinished }) =>
-    isFinished ? "line-through" : "none"};
-`;
 function CateDetail({ onAddNewTask, allTasks, onHandleFinished, selectCate }) {
+  const dispatch = useDispatch();
+  const todos = useSelector(allTodo);
   const [newTask, setNewTask] = useState({
     category:
       selectCate == null || selectCate == "All" ? "Uncategorized" : selectCate,
@@ -74,6 +52,8 @@ function CateDetail({ onAddNewTask, allTasks, onHandleFinished, selectCate }) {
     if (e.key !== "Enter") return;
     console.log(e);
     onAddNewTask(newTask);
+    // redux flow
+    dispatch(addTodo(newTask));
   };
   const onHoverCate = (e) => {
     console.log("mouse hover", e);
@@ -111,6 +91,7 @@ function CateDetail({ onAddNewTask, allTasks, onHandleFinished, selectCate }) {
           </div>
         );
       })}
+      {JSON.stringify(todos)}
     </div>
   );
 }
