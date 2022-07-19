@@ -1,42 +1,17 @@
-import { Link } from "react-router-dom";
+import LinkWithPreload from "./routes/PreloadLink";
+import { routes } from "./routes/index";
 import "./App.css";
 function App() {
   return (
     <div className="bg-red-300 flex flex-col justify-center items-center h-screen w-[100vw]">
       <ul className="flex flex-col">
-        <li className="text-white font-bold text-[50px]">
-          <Link to="expanding-cards">Expanding Cards</Link>
-        </li>
-        <li className="text-white font-bold text-[50px]">
-          <Link to="progress-steps">Progress Steps</Link>
-        </li>
-        <li className="text-white font-bold text-[50px]">
-          <Link to="rotating-nav">Rotating Nav</Link>
-        </li>
-        <li className="text-white font-bold text-[50px]">
-          <Link to="blurry-loading">Blurrly Loading</Link>
-        </li>
-        <li className="text-white font-bold text-[50px]">
-          <Link to="sound-board">Sound Board</Link>
-        </li>
-        <li className="text-white font-bold text-[50px]">
-          <Link to="dad-jokes">Bad Dad Jokes</Link>
-        </li>
-        <li className="text-white font-bold text-[50px]">
-          <Link to="get-key-code">Get Key Code</Link>
-        </li>
-        <li className="text-white font-bold text-[50px]">
-          <Link to="random-choice">Random Choice Picker</Link>
-        </li>
-        <li className="text-white font-bold text-[50px]">
-          <Link to="incrementing-counter">Social Counter</Link>
-        </li>
-        <li className="text-white font-bold text-[50px]">
-          <Link to="themed-clock">Themed Clock</Link>
-        </li>
-        <li className="text-white font-bold text-[50px]">
-          <Link to="todo">Todo App</Link>
-        </li>
+        {routes.map((link) => (
+          <li className="text-white font-bold text-[50px]">
+            <LinkWithPreload to={link.path}>
+              {link.componentName}
+            </LinkWithPreload>
+          </li>
+        ))}
       </ul>
     </div>
   );

@@ -2,9 +2,19 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import App from "../App";
 import Loading from "../components/Loading";
+
+const ReactLazyPreload = (importStatement) => {
+  const Component = lazy(importStatement);
+  Component.preload = importStatement;
+  return Component;
+};
+
+const Todo = ReactLazyPreload(() => import("../pages/Todo/Todo"));
+// const Todo = lazy(() => import("../pages/Todo/Todo"));
 const ExpandingCards = lazy(() =>
   import("../pages/expanding-cards/ExpandingCards")
 );
+
 const ProgressSteps = lazy(() =>
   import("../pages/progress-steps/ProgressSteps")
 );
@@ -20,24 +30,89 @@ const IncrementingCounter = lazy(() =>
   import("../pages/incrementing-counter/IncrementingCounter")
 );
 const ThemeClock = lazy(() => import("../pages/themed-clock/ThemeClock"));
-const Todo = lazy(() => import("../pages/Todo/Todo"));
+
+export const routes = [
+  {
+    path: "/expanding-cards",
+    exact: true,
+    component: ExpandingCards,
+    componentName: "ExpandingCards",
+  },
+  {
+    path: "/progress-steps",
+    exact: true,
+    component: ProgressSteps,
+    componentName: "Progress Steps",
+  },
+  {
+    path: "/rotating-nav",
+    exact: true,
+    component: RotatingNav,
+    componentName: "Rotating Nav",
+  },
+  {
+    path: "/blurry-loading",
+    exact: true,
+    component: BlurryLoading,
+    componentName: "Blurry Loading",
+  },
+  {
+    path: "/sound-board",
+    exact: true,
+    component: SoundBoard,
+    componentName: "SoundBoard",
+  },
+  {
+    path: "/dad-jokes",
+    exact: true,
+    component: BadDadWapper,
+    componentName: "Bad Dad Joke",
+  },
+  {
+    path: "/get-key-code",
+    exact: true,
+    component: GetKeyCode,
+    componentName: "Get Key Code",
+  },
+  {
+    path: "/todo",
+    exact: true,
+    component: Todo,
+    componentName: "Todo",
+  },
+  {
+    path: "/themed-clock",
+    exact: true,
+    component: ThemeClock,
+    componentName: "Theme Clock",
+  },
+  {
+    path: "/incrementing-counter",
+    exact: true,
+    component: IncrementingCounter,
+    componentName: "Incrementing Counter",
+  },
+  {
+    path: "/random-choice",
+    exact: true,
+    component: RandomChoice,
+    componentName: "Random Choice",
+  },
+];
 
 function RouteConfig(props) {
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
         <Route index element={<App />} />
-        <Route path="expanding-cards" element={<ExpandingCards />} />
-        <Route path="progress-steps" element={<ProgressSteps />} />
-        <Route path="rotating-nav" element={<RotatingNav />} />
-        <Route path="blurry-loading" element={<BlurryLoading />} />
-        <Route path="sound-board" element={<SoundBoard />} />
-        <Route path="dad-jokes" element={<BadDadWapper />} />
-        <Route path="get-key-code" element={<GetKeyCode />} />
-        <Route path="random-choice" element={<RandomChoice />} />
-        <Route path="incrementing-counter" element={<IncrementingCounter />} />
-        <Route path="themed-clock" element={<ThemeClock />} />
-        <Route path="todo" element={<Todo />} />
+        {routes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            exact={route.exact}
+            element={<route.component />}
+          />
+        ))}
       </Routes>
     </Suspense>
   );
