@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled, { keyframes } from "styled-components";
 const SpinningAnimation = keyframes`
   0% {
@@ -21,7 +20,7 @@ const LoadingSpinner = styled.div`
 function Loading(props) {
   return (
     <SpinningContainer>
-      <LoadingSpinner></LoadingSpinner>
+      <LoadingSpinner>Loading</LoadingSpinner>
     </SpinningContainer>
   );
 }

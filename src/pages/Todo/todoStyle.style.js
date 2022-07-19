@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledCheckBox = styled.div `
+const StyledCheckBox = styled.div`
   cursor: pointer;
   width: 28px;
   height: 28px;
@@ -10,17 +10,16 @@ const StyledCheckBox = styled.div `
   display: flex;
   justify-content: center;
   align-items: center;
+  // background-color: ${({ isFinished }) => (isFinished ? "red" : "black")};
   ${({ isFinished }) => {
     if (isFinished) {
-      return ` & ::after {
-    content: "🦄";
-}
+      return `&::after { content: "🦄"; }
 `;
     }
   }}
 `;
 
-const StyledTaskText = styled.div `
+const StyledTaskText = styled.div`
   font-size: 18px;
   color: #5a5a5a;
   margin-right: 18px;
@@ -28,7 +27,7 @@ const StyledTaskText = styled.div `
     isFinished ? "line-through" : "none"};
 `;
 
-const StyledCateTitle = styled.div `
+const StyledCateTitle = styled.div`
   font-size: 22px;
   color: ${({ active }) => (active ? "#EA5959" : "#525252")};
 `;

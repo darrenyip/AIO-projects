@@ -1,59 +1,33 @@
-import { TaskList } from "./todoData";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CateDetail from "./components/CateDetail";
 import { StyledCateTitle } from "./todoStyle.style";
+import { getAllCate, updateFilter, getCurrentCate } from "./todoSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function Todo(props) {
-  const [allTasks, setAllTasks] = useState(TaskList);
   const [selectCate, setSelectCate] = useState(null);
-  const [allCategories, setAllCategories] = useState(null);
-  const setAllCaties = () => {
-    const caties = new Set();
-    allTasks.forEach((el) => {
-      if (el.category !== "Uncategorized") caties.add(el.category);
-    });
-    console.log("all caties: ", [...caties]);
-    const catiesArr = [...caties];
-    setAllCategories(catiesArr);
-  };
-  useEffect(() => {
-    setAllCaties();
-  }, []);
+  //  --- redux state ----
+  const dispatch = useDispatch();
+  const currentCategory = useSelector(getCurrentCate);
+  const cates = useSelector(getAllCate);
 
-  const addNewTask = (task) => {
-    console.log("add new task: ", task, allTasks);
-    const taskCopy = JSON.parse(JSON.stringify(allTasks));
-    taskCopy.push(task);
-    setAllTasks(taskCopy);
-  };
-  const handleFinished = (task) => {
-    console.log("!!!!------");
-    const taskCopy = JSON.parse(JSON.stringify(allTasks));
-    taskCopy.forEach((old) => {
-      if (old.task === task.task) {
-        old.completed = !old.completed;
-        console.log(old.completed);
-      }
-    });
-    setAllTasks(taskCopy);
-  };
   return (
     <div className="w-full h-screen bg-red-300 flex justify-center items-center">
       <div className="bg-white w-[900px] min-h-[700px] rounded-lg flex ">
         <div className="bg-white border-r-2 border-[#D8D8D8] w-[200px] rounded-bl-lg rounded-tl-lg flex justify-center items-center">
           <div className="flex flex-col gap-[24px]">
             <StyledCateTitle
-              active={selectCate == null}
-              onClick={() => setSelectCate(null)}
+              active={currentCategory == "All"}
+              onClick={() => dispatch(updateFilter({ category: "All" }))}
             >
               All
             </StyledCateTitle>
-            {allCategories &&
-              allCategories.map((el, index) => (
+            {cates &&
+              cates.map((el, index) => (
                 <StyledCateTitle
-                  active={selectCate == el}
+                  active={currentCategory == el}
                   key={el + index}
-                  onClick={() => setSelectCate(el)}
+                  onClick={() => dispatch(updateFilter({ category: el }))}
                 >
                   {el}
                 </StyledCateTitle>
@@ -62,12 +36,7 @@ function Todo(props) {
         </div>
 
         <div className="py-[30px] pl-[35px] pr-[40px] w-full">
-          <CateDetail
-            allTasks={allTasks}
-            selectCate={selectCate}
-            onAddNewTask={addNewTask}
-            onHandleFinished={handleFinished}
-          />
+          <CateDetail selectCate={selectCate} />
         </div>
       </div>
     </div>
