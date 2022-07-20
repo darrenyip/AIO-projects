@@ -13,6 +13,8 @@ const preloadRouteComponent = (path) => {
     "\nloading the component "
   );
   if (component && component.preload) {
+    // TODO: preload is triggered and chunk has been downloaded but!
+    // the fallback has also triggered due to some issue
     component.preload();
   }
 };
